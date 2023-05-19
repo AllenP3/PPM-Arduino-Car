@@ -192,7 +192,7 @@ void mobilize()
   if(sysAlive == true){
 
 
-  //Object Detection using Ultrasonic Sensor
+  //Obstacle Detection using Ultrasonic Sensor
   if(detect == true){
     neutral();
     Serial.println("Object Detected");
