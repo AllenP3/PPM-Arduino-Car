@@ -1,4 +1,8 @@
- 
+/*
+Move the PPMReader and InterruptHandler directories into your Arduino library directory.
+Refer to https://github.com/Nikkilae/PPM-reader for any issues that arise when dealing with the PPM Reader library
+*/
+
 #include <PPMReader.h>
 #define ML_Ctrl 2    
 #define ML_PWM 5  
@@ -64,7 +68,7 @@ void readPPMData()
         unsigned long value = ppm.latestValidChannelValue(channel, 0);
         Serial.print(String(value) + " ");
     }*/
-    for (int channel = 1; channel <= channelAmount; ++channel)
+    for (int channel = 1; channel <= channelAmount; ++channel) //storing channel values
   {
     unsigned long value = ppm.latestValidChannelValue(channel, 0);
     ch[channel - 1] = value;
@@ -122,7 +126,7 @@ void neutral()
   analogWrite(MR_PWM,0);
 }
 
-void rotateHServo(int myangle) {
+void rotateHServo(int myangle) { //SERVO CONTROL
   pulsewidth = myangle * 11 + 500; //calculate the value of pulse width
   digitalWrite(servoPin,HIGH);
   delayMicroseconds(pulsewidth); //The duration of high level is pulse width
@@ -188,14 +192,14 @@ void mobilize()
   if(sysAlive == true){
 
 
-  //Object Detection
+  //Obstacle Detection using Ultrasonic Sensor
   if(detect == true){
     neutral();
     Serial.println("Object Detected");
     ch2_neutral = false;
     pp1 = 100;
     pp2 = pp1;
-    move_backward();
+    move_backward(); //Move backwards automatically when something is detected
     Serial.println("Auto-moving backward");
     delay(50);
   }
