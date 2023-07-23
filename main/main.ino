@@ -1,16 +1,17 @@
-#include "wrapper.h"
+#include "omni_edit.h"
 
+void setup();
 void loop()
 { 
    readPPMData();
   mobilize();
-  //neutral;
+  //stop_Stop();
 
- /*for (int i = 0; i < 6; i++)
+ for (int i = 0; i < 6; i++)
   {
     Serial.print(" " + String(ch[i]) + " "); 
   }
-  Serial.println();*/
+  Serial.println();
   /*if(rChar == 'w'){
       Serial.println("got w");
 
